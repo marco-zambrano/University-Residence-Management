@@ -58,12 +58,11 @@ input[type="submit"]:hover {
     background-color: #072c66;
 }
 .error {
-    background-color: #d9534f;
-    padding: 0.6rem;
     margin-bottom: 1rem;
-    border-radius: 6px;
     text-align: center;
     font-weight: 600;
+    opacity: .7;
+    color: rgb(255, 18, 1);
     display: none;
 }
 @media (max-width: 450px) {
