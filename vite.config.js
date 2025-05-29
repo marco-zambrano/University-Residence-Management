@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
     server: {
-        open: 'src/pages/login.html', // Ruta relativa desde src/
+        open: 'src/pages/dashboard.html', // Ruta relativa desde src/
     },
     build: {
         rollupOptions: {
