@@ -7,19 +7,18 @@
     --gradient: linear-gradient(135deg, var(--main) 0%, #0a3d7a 100%);
 }
 
+/* General settings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--light);
     min-height: 100vh;
     line-height: 1.6;
 }
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -29,18 +28,17 @@ body {
     flex-direction: column;
 }
 
+/* Header */
 .header {
     text-align: center;
     margin-bottom: 1.7rem;
 }
-
 .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
-
 .logo-icon {
     width: 60px;
     height: 60px;
@@ -52,18 +50,15 @@ body {
     color: var(--white);
     box-shadow: 0 8px 32px var(--shadow);
 }
-
 .logo-icon svg {
     width: 32px;
     height: 32px;
 }
-
 h1 {
     color: var(--main);
     font-size: 1.8rem;
     font-weight: 700;
 }
-
 .subtitle {
     color: var(--main);
     font-size: 1rem;
@@ -71,13 +66,14 @@ h1 {
     font-weight: 400;
 }
 
+/* Main content */
 .main-content {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+/* Zones Cards */
 .zones-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -85,7 +81,6 @@ h1 {
     width: 100%;
     max-width: 750px;
 }
-
 .zone-card {
     background: var(--white);
     border-radius: 20px;
@@ -97,7 +92,6 @@ h1 {
     position: relative;
     overflow: hidden;
 }
-
 .zone-card::before {
     content: '';
     position: absolute;
@@ -109,26 +103,16 @@ h1 {
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
-
 .zone-card:hover::before {
     transform: scaleX(1);
 }
-
 .zone-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 16px 48px var(--shadow-hover);
     border-color: var(--main);
 }
 
-.zone-card.selected {
-    border-color: var(--main);
-    background: linear-gradient(135deg, var(--white) 0%, #f8f9ff 100%);
-}
-
-.zone-card.selected::before {
-    transform: scaleX(1);
-}
-
+/* Card Content */
 .zone-icon {
     width: 40px;
     height: 40px;
@@ -140,32 +124,22 @@ h1 {
     color: var(--white);
     margin-bottom: .5rem;
 }
-
 .zone-icon svg {
     width: 24px;
     height: 24px;
 }
-
 .zone-card h3 {
     color: var(--main);
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
-
 .zone-card p {
     color: var(--main);
     opacity: 0.7;
     margin-bottom: 1rem;
     font-size: 0.90rem;
 }
-
-/* .zone-stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-} */
-
 .occupancy {
     background: var(--gradient);
     color: var(--white);
@@ -175,92 +149,41 @@ h1 {
     font-weight: 500;
 }
 
-/* .selected-zone {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--main);
-    color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    box-shadow: 0 8px 32px var(--shadow-hover);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    animation: slideUp 0.3s ease;
-}
-
-.selected-zone button {
-    background: var(--white);
-    color: var(--main);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.selected-zone button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-} */
-
-/* @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-} */
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 1.5rem;
     }
     
     .header {
         margin-bottom: 2rem;
     }
-
     h1 {
         font-size: 2rem;
     }
     
     .zones-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.4rem;
     }
-    
     .zone-card {
         padding: 1.5rem;
-    }
-    
-    .selected-zone {
-        bottom: 1rem;
-        left: 1rem;
-        right: 1rem;
-        transform: none;
-        flex-direction: column;
-        text-align: center;
     }
 }
 
 @media (max-width: 480px) {
+    .logo {
+        gap: .8rem;
+    }
+    .logo-icon {
+        width: 54px;
+        height: 54px;
+    }   
     h1 {
         font-size: 1.5rem;
     }
     
-    .subtitle {
-        font-size: 1rem;
-    }
-    
     .zone-card {
-        padding: 1rem;
+        padding: 1.3rem;
     }
 }
