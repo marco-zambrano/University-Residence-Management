@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Estudiantes - Residencias Universitarias</title>
-    <link rel="stylesheet" href="../assets/css/student.css">
+    <link rel="stylesheet" href="../assets/css/student/student.css">
 </head>
 <body>
     <header class="header">
@@ -20,7 +20,7 @@
                     <p>Edificio 1</p>
                 </div>
             </div>
-            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+            <button class="logout-btn">Cerrar Sesión</button>
         </div>
     </header>
 
@@ -33,13 +33,13 @@
 
             <section class="filters-section">
                 <div class="filters">
-                    <select id="tipoHabitacion" onchange="filterRooms()">
-                        <option value="">Tipo de habitación</option>
-                        <option value="individual">Individual</option>
-                        <option value="doble">Doble</option>
-                        <option value="triple">Triple</option>
+                    <select id="capacity">
+                        <option value="">Capacidad</option>
+                        <option value="1">1 Estudiante</option>
+                        <option value="2">2 Estudiante</option>
+                        <option value="3">3 Estudiante</option>
                     </select>
-                    <select id="piso" onchange="filterRooms()">
+                    <select id="piso">
                         <option value="">Todos los pisos</option>
                         <option value="1">Piso 1</option>
                         <option value="2">Piso 2</option>
@@ -47,7 +47,7 @@
                         <option value="4">Piso 4</option>
                     </select>
                     <div class="search-box">
-                        <input type="text" id="searchRoom" placeholder="Buscar habitación..." onkeyup="filterRooms()">
+                        <input type="text" id="searchRoom" placeholder="Buscar por número, capacidad o piso...">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
                             <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
@@ -74,7 +74,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Reservar Habitación</h3>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <button class="close-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="room-details" id="modalRoomDetails">
@@ -101,12 +101,12 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
-                <button class="btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button>
+                <button class="btn-secondary">Cancelar</button>
+                <button class="btn-primary">Confirmar Reserva</button>
             </div>
         </div>
     </div>
 
-    <script src="../assets/js/student.js"></script>
+    <script src="../assets/js/student/student.js" type="module"></script>
 </body>
 </html>
