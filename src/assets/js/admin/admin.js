@@ -1,138 +1,41 @@
-// Datos simulados
-let roomsData = [
-    {
-        id: 1,
-        number: "101",
-        type: "individual",
-        floor: 1,
-        status: "ocupada",
-        price: 350,
-        student: "Juan Pérez",
-        studentId: 1
-    },
-    {
-        id: 2,
-        number: "102",
-        type: "doble",
-        floor: 1,
-        status: "disponible",
-        price: 280,
-        student: null,
-        studentId: null
-    },
-    {
-        id: 3,
-        number: "103",
-        type: "individual",
-        floor: 1,
-        status: "mantenimiento",
-        price: 350,
-        student: null,
-        studentId: null
-    },
-    {
-        id: 4,
-        number: "201",
-        type: "triple",
-        floor: 2,
-        status: "ocupada",
-        price: 220,
-        student: "Ana López",
-        studentId: 2
-    },
-    {
-        id: 5,
-        number: "202",
-        type: "doble",
-        floor: 2,
-        status: "disponible",
-        price: 280,
-        student: null,
-        studentId: null
-    }
-];
-
-let studentsData = [
-    {
-        id: 1,
-        name: "Juan Pérez",
-        email: "juan.perez@universidad.edu",
-        room: "101",
-        checkIn: "2024-01-15",
-        status: "activo"
-    },
-    {
-        id: 2,
-        name: "Ana López",
-        email: "ana.lopez@universidad.edu",
-        room: "201",
-        checkIn: "2024-02-01",
-        status: "activo"
-    },
-    {
-        id: 3,
-        name: "Carlos Ruiz",
-        email: "carlos.ruiz@universidad.edu",
-        room: null,
-        checkIn: null,
-        status: "pendiente"
-    }
-];
-
-let reservasData = [
-    {
-        id: 1,
-        student: "María García",
-        room: "102",
-        requestDate: "2024-01-20",
-        checkInDate: "2024-02-15",
-        status: "pendiente"
-    },
-    {
-        id: 2,
-        student: "Pedro Martín",
-        room: "202",
-        requestDate: "2024-01-18",
-        checkInDate: "2024-02-10",
-        status: "confirmada"
-    },
-    {
-        id: 3,
-        student: "Laura Sánchez",
-        room: "301",
-        requestDate: "2024-01-22",
-        checkInDate: "2024-03-01",
-        status: "pendiente"
-    }
-];
+import { roomsData, studentsData, reservasData } from './data.js';
 
 let currentReservasFilter = 'todas';
+const el = (selector) => document.querySelector(selector);
+const els = (selector) => document.querySelectorAll(selector);
 
 // Inicializar aplicación
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     showSection('dashboard');
     renderRoomsTable();
     renderStudentsTable();
     renderReservasTable();
     updateStats();
-    createOccupancyChart();
 });
+
+
+el('.dashboard-item').addEventListener('click', () => showSection('dashboard'));
+el('.habitaciones-item').addEventListener('click', () => showSection('habitaciones'));
+el('.estudiantes-item').addEventListener('click', () => showSection('estudiantes'));
+el('.reservas-item').addEventListener('click', () => showSection('reservas'));
 
 // Navegación entre secciones
 function showSection(sectionName) {
     // Ocultar todas las secciones
-    document.querySelectorAll('.content-section').forEach(section => {
+    els('.content-section').forEach(section => {
         section.classList.remove('active');
     });
-    
+
     // Mostrar sección seleccionada
-    document.getElementById(sectionName).classList.add('active');
+    el(`#${sectionName}`).classList.add('active');
     
     // Actualizar menú activo
-    document.querySelectorAll('.menu-item').forEach(item => {
+    els('.menu-item').forEach(item => {
         item.classList.remove('active');
     });
-    document.querySelector(`.${sectionName}-item`).classList.add('active');
+
+    el(`.${sectionName}-item`).classList.add('active');
+
     
     // Actualizar título
     const titles = {
@@ -141,7 +44,8 @@ function showSection(sectionName) {
         'estudiantes': 'Gestión de Estudiantes',
         'reservas': 'Gestión de Reservas'
     };
-    document.getElementById('sectionTitle').textContent = titles[sectionName];
+
+    el('#sectionTitle').textContent = titles[sectionName];
 }
 
 // Actualizar estadísticas del dashboard
@@ -152,7 +56,7 @@ function updateStats() {
     const totalStudents = studentsData.filter(student => student.status === 'activo').length;
     
     // Actualizar las tarjetas de estadísticas
-    const statCards = document.querySelectorAll('.stat-card');
+    const statCards = els('.stat-card');
     if (statCards.length >= 4) {
         statCards[0].querySelector('h3').textContent = totalRooms;
         statCards[1].querySelector('h3').textContent = occupiedRooms;
@@ -163,14 +67,14 @@ function updateStats() {
 
 // Renderizar tabla de habitaciones
 function renderRoomsTable() {
-    const tbody = document.getElementById('roomsTableBody');
+    const tbody = el('#roomsTableBody')
     tbody.innerHTML = '';
     
     roomsData.forEach(room => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td><strong>${room.number}</strong></td>
-            <td>${capitalizeFirst(room.type)}</td>
+            <td>${room.capacity}</td>
             <td>Piso ${room.floor}</td>
             <td><span class="status-badge status-${room.status}">${capitalizeFirst(room.status)}</span></td>
             <td>€${room.price}/mes</td>
@@ -198,7 +102,7 @@ function renderRoomsTable() {
 
 // Renderizar tabla de estudiantes
 function renderStudentsTable() {
-    const tbody = document.getElementById('studentsTableBody');
+    const tbody = el('#studentsTableBody');
     tbody.innerHTML = '';
     
     studentsData.forEach(student => {
@@ -232,7 +136,7 @@ function renderStudentsTable() {
 
 // Renderizar tabla de reservas
 function renderReservasTable() {
-    const tbody = document.getElementById('reservasTableBody');
+    const tbody = el('#reservasTableBody');
     tbody.innerHTML = '';
     
     let filteredReservas = reservasData;
@@ -277,20 +181,25 @@ function renderReservasTable() {
     });
 }
 
+el('.todas-filter').addEventListener('click', () => filterReservas('todas'));
+el('.pendiente-filter').addEventListener('click', () => filterReservas('pendiente'));
+el('.confirmada-filter').addEventListener('click', () => filterReservas('confirmada'));
+
 // Filtrar reservas
 function filterReservas(filter) {
     currentReservasFilter = filter;
     
-    // Actualizar botones activos
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    els('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
-    });
-    document.querySelector(`.${filter}-filter`).classList.add('active');
+    })
+    el(`.${filter}-filter`).classList.add('active');
 
     renderReservasTable();
 }
 
 // Funciones de gestión de habitaciones
+
+el('#new-room-btn').addEventListener('click', openAddRoomModal);
 function openAddRoomModal() {
     alert('Modal para agregar nueva habitación (por implementar)');
 }
@@ -310,6 +219,7 @@ function deleteRoom(roomId) {
 }
 
 // Funciones de gestión de estudiantes
+el('#new-student-btn').addEventListener('click', openAddStudentModal);
 function openAddStudentModal() {
     alert('Modal para agregar nuevo estudiante (por implementar)');
 }
@@ -352,10 +262,14 @@ function editReserva(reservaId) {
     alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
 }
 
+
+el('.logout-btn').addEventListener('click', logout);
+
 // Cerrar sesión
 function logout() {
     if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-        window.location.href = 'index.html';
+        console.log('redireccionando');
+        // window.location.href = './../../../pages/dashboard.html';
     }
 }
 
@@ -371,13 +285,15 @@ function formatDate(dateString) {
 
 // Responsive sidebar toggle
 function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
+    // const sidebar = document.querySelector('.sidebar');
+    const sidebar = el('.sidebar');
     sidebar.classList.toggle('open');
 }
 
 // Cerrar sidebar al hacer clic fuera (móvil)
 document.addEventListener('click', function(event) {
-    const sidebar = document.querySelector('.sidebar');
+    // const sidebar = document.querySelector('.sidebar');
+    const sidebar = el('.sidebar');
     const isClickInsideSidebar = sidebar.contains(event.target);
     
     if (!isClickInsideSidebar && window.innerWidth <= 1024) {
@@ -387,7 +303,8 @@ document.addEventListener('click', function(event) {
 
 // Animaciones de entrada
 document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.stat-card, .chart-card, .recent-activity');
+    const cards = els('.stat-card, .chart-card, .recent-activity');
+
     cards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';

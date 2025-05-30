@@ -7,7 +7,6 @@ export const roomsData = [
         status: "disponible",
         price: 350,
         amenities: ["WiFi", "Baño privado", "Escritorio"],
-        size: "12 m²"
     },
     {
         id: 2,
@@ -17,7 +16,6 @@ export const roomsData = [
         status: "disponible",
         price: 280,
         amenities: ["WiFi", "Baño compartido", "2 Escritorios"],
-        size: "18 m²"
     },
     {
         id: 3,
@@ -27,7 +25,6 @@ export const roomsData = [
         status: "ocupada",
         price: 350,
         amenities: ["WiFi", "Baño privado", "Escritorio"],
-        size: "12 m²"
     },
     {
         id: 4,
@@ -37,46 +34,41 @@ export const roomsData = [
         status: "disponible",
         price: 220,
         amenities: ["WiFi", "Baño compartido", "3 Escritorios"],
-        size: "25 m²"
-    },
-    {
-        id: 5,
-        number: "202",
-        capacity: 2,
-        floor: 2,
-        status: "disponible",
-        price: 280,
-        amenities: ["WiFi", "Baño privado", "2 Escritorios", "Balcón"],
-        size: "20 m²"
-    },
-    {
-        id: 6,
-        number: "203",
-        capacity: 3,
-        floor: 2,
-        status: "disponible",
-        price: 380,
-        amenities: ["WiFi", "Baño privado", "Escritorio", "Vista al jardín"],
-        size: "15 m²"
-    },
-    {
-        id: 7,
-        number: "500",
-        capacity: 1,
-        floor: 3,
-        status: "ocupada",
-        price: 280,
-        amenities: ["WiFi", "Baño compartido", "2 Escritorios"],
-        size: "18 m²"
-    },
-    {
-        id: 8,
-        number: "302",
-        capacity: 1,
-        floor: 3,
-        status: "disponible",
-        price: 350,
-        amenities: ["WiFi", "Baño privado", "Escritorio"],
-        size: "12 m²"
-    }
+    } //,
+    // {
+    //     id: 5,
+    //     number: "202",
+    //     capacity: 2,
+    //     floor: 2,
+    //     status: "disponible",
+    //     price: 280,
+    //     amenities: ["WiFi", "Baño privado", "2 Escritorios", "Balcón"],
+    // },
+    // {
+    //     id: 6,
+    //     number: "203",
+    //     capacity: 3,
+    //     floor: 2,
+    //     status: "disponible",
+    //     price: 380,
+    //     amenities: ["WiFi", "Baño privado", "Escritorio", "Vista al jardín"],
+    // },
+    // {
+    //     id: 7,
+    //     number: "500",
+    //     capacity: 1,
+    //     floor: 3,
+    //     status: "ocupada",
+    //     price: 280,
+    //     amenities: ["WiFi", "Baño compartido", "2 Escritorios"],
+    // },
+    // {
+    //     id: 8,
+    //     number: "302",
+    //     capacity: 1,
+    //     floor: 3,
+    //     status: "disponible",
+    //     price: 350,
+    //     amenities: ["WiFi", "Baño privado", "Escritorio"],
+    // }
 ];

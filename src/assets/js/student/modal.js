@@ -51,7 +51,7 @@ export const openReservationModal = (roomId) => {
     // Añadir detalles
     roomDetails.append(
         createDetailElement('Capacidad', selectedRoom.capacity),
-        createDetailElement('Ubicación', `Piso ${selectedRoom.floor} • ${selectedRoom.size}`),
+        createDetailElement('Ubicación', `Piso ${selectedRoom.floor}`),
         createDetailElement('Precio', `€${selectedRoom.price}/mes`),
         createDetailElement('Incluye', selectedRoom.amenities.join(', '))
     );

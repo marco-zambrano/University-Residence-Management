@@ -18,7 +18,7 @@
         </div>
         
         <ul class="sidebar-menu">
-            <li class="menu-item dashboard-item active" onclick="showSection('dashboard')">
+            <li class="menu-item dashboard-item active">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
                     <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
@@ -27,13 +27,13 @@
                 </svg>
                 Dashboard
             </li>
-            <li class="menu-item habitaciones-item" onclick="showSection('habitaciones')">
+            <li class="menu-item habitaciones-item" >
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 9V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V9M20 9V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V9M20 9H4" stroke="currentColor" stroke-width="2"/>
                 </svg>
                 Habitaciones
             </li>
-            <li class="menu-item estudiantes-item" onclick="showSection('estudiantes')">
+            <li class="menu-item estudiantes-item">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2"/>
                     <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
@@ -41,7 +41,7 @@
                 </svg>
                 Estudiantes
             </li>
-            <li class="menu-item reservas-item" onclick="showSection('reservas')">
+            <li class="menu-item reservas-item">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
                     <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
@@ -53,7 +53,7 @@
         </ul>
         
         <div class="sidebar-footer">
-            <button class="logout-btn" onclick="logout()">
+            <button class="logout-btn">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2"/>
                     <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2"/>
@@ -133,7 +133,7 @@
         <section id="habitaciones" class="content-section">
             <div class="section-header">
                 <h2>Gestión de Habitaciones</h2>
-                <button class="btn-primary" onclick="openAddRoomModal()">
+                <button class="btn-primary" id='new-room-btn'>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
                         <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
@@ -147,7 +147,7 @@
                     <thead>
                         <tr>
                             <th>Habitación</th>
-                            <th>Tipo</th>
+                            <th>Capacidad</th>
                             <th>Piso</th>
                             <th>Estado</th>
                             <th>Precio/mes</th>
@@ -166,7 +166,7 @@
         <section id="estudiantes" class="content-section">
             <div class="section-header">
                 <h2>Gestión de Estudiantes</h2>
-                <button class="btn-primary" onclick="openAddStudentModal()">
+                <button class="btn-primary" id="new-student-btn">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
                         <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
@@ -199,9 +199,9 @@
             <div class="section-header">
                 <h2>Gestión de Reservas</h2>
                 <div class="filter-buttons">
-                    <button class="filter-btn todas-filter active" onclick="filterReservas('todas')">Todas</button>
-                    <button class="filter-btn pendiente-filter" onclick="filterReservas('pendiente')">Pendientes</button>
-                    <button class="filter-btn confirmada-filter" onclick="filterReservas('confirmada')">Confirmadas</button>
+                    <button class="filter-btn todas-filter active">Todas</button>
+                    <button class="filter-btn pendiente-filter">Pendientes</button>
+                    <button class="filter-btn confirmada-filter">Confirmadas</button>
                 </div>
             </div>
             
@@ -227,6 +227,6 @@
 
     <!-- Modales se agregarían aquí -->
     
-    <script src="../assets/js/admin/admin.js"></script>
+    <script src="../assets/js/admin/admin.js" type="module"></script>
 </body>
 </html>
