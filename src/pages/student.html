@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Estudiantes - Residencias Universitarias</title>
+    <link rel="stylesheet" href="../assets/css/student.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>Portal Estudiantes</h1>
+                    <p>Edificio 1</p>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="welcome-section">
+                <h2>¡Bienvenido, Juan Pérez!</h2>
+                <p>Encuentra tu habitación ideal en nuestra residencia</p>
+            </section>
+
+            <section class="filters-section">
+                <div class="filters">
+                    <select id="tipoHabitacion" onchange="filterRooms()">
+                        <option value="">Tipo de habitación</option>
+                        <option value="individual">Individual</option>
+                        <option value="doble">Doble</option>
+                        <option value="triple">Triple</option>
+                    </select>
+                    <select id="piso" onchange="filterRooms()">
+                        <option value="">Todos los pisos</option>
+                        <option value="1">Piso 1</option>
+                        <option value="2">Piso 2</option>
+                        <option value="3">Piso 3</option>
+                        <option value="4">Piso 4</option>
+                    </select>
+                    <div class="search-box">
+                        <input type="text" id="searchRoom" placeholder="Buscar habitación..." onkeyup="filterRooms()">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rooms-section">
+                <div class="section-header">
+                    <h3>Habitaciones Disponibles</h3>
+                    <span class="room-count">24 habitaciones encontradas</span>
+                </div>
+
+                <div class="rooms-grid" id="roomsGrid">
+                    <!-- rooms article goes here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de Reserva -->
+    <div class="modal" id="reservaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reservar Habitación</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="room-details" id="modalRoomDetails">
+                    <!-- Detalles de la habitación seleccionada -->
+                </div>
+                <form id="reservaForm">
+                    <div class="form-group">
+                        <label for="fechaIngreso">Fecha de Ingreso:</label>
+                        <input type="date" id="fechaIngreso" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duracion">Duración del alojamiento:</label>
+                        <select id="duracion" required>
+                            <option value="">Selecciona duración</option>
+                            <option value="1-semestre">1 Semestre</option>
+                            <option value="2-semestres">2 Semestres</option>
+                            <option value="año-completo">Año Completo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comentarios">Comentarios adicionales:</label>
+                        <textarea id="comentarios" placeholder="Alguna solicitud especial..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                <button class="btn-primary" onclick="confirmarReserva()">Confirmar Reserva</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/student.js"></script>
+</body>
+</html>
