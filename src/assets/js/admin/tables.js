@@ -8,11 +8,11 @@ import {
     approveReserva,
     rejectReserva,
     editReserva
-} from './tables-logic.js'; // Asumo que estas funciones están en actions.js
+} from './tables-logic.js';
 
+// helper
 const el = (selector) => document.querySelector(selector);
-
-
+// scaper for XSS vulnerabilities
 const escapeHtml = (unsafe) => {
     if (!unsafe) return '';
     return unsafe.toString()
@@ -23,7 +23,7 @@ const escapeHtml = (unsafe) => {
         .replace(/'/g, "&#039;");
 };
 
-// Componentes reutilizables
+// Buttons creation
 const createActionButton = (type, id, actionFn) => {
     const button = document.createElement('button');
     button.className = `action-btn btn-${type}`;
@@ -32,7 +32,6 @@ const createActionButton = (type, id, actionFn) => {
     button.addEventListener('click', () => actionFn(id));
     return button;
 };
-
 const getButtonTitle = (type) => {
     const titles = {
         'edit': 'Editar',
@@ -43,7 +42,6 @@ const getButtonTitle = (type) => {
     };
     return titles[type] || type;
 };
-
 const getButtonIcon = (type) => {
     const icons = {
         'edit': `
@@ -78,14 +76,7 @@ const getButtonIcon = (type) => {
     };
     return icons[type] || '';
 };
-
-const createStatusBadge = (status) => {
-    const span = document.createElement('span');
-    span.className = `status-badge status-${status}`;
-    span.textContent = capitalizeFirst(status);
-    return span;
-};
-
+// create buttons containers, this fn calls the one that creates the btns individualmente
 const createActionButtons = (id, actions) => {
     const container = document.createElement('div');
     container.className = 'action-buttons';
@@ -95,8 +86,15 @@ const createActionButtons = (id, actions) => {
     });
     return container;
 };
+// Status spam (in any table) this is reutilizable ya tu sabe
+const createStatusBadge = (status) => {
+    const span = document.createElement('span');
+    span.className = `status-badge status-${status}`;
+    span.textContent = capitalizeFirst(status);
+    return span;
+};
 
-// Helper para añadir celdas
+// Helper to add cells
 function addCell(row, content) {
     const td = document.createElement('td');
     if (typeof content === 'string') {
@@ -107,7 +105,8 @@ function addCell(row, content) {
     row.appendChild(td);
 }
 
-// Funciones principales
+// main functions for the tables creations
+// Rooms table
 export function renderRoomsTable() {
     const tbody = el('#roomsTableBody');
     tbody.innerHTML = '';
@@ -131,7 +130,7 @@ export function renderRoomsTable() {
         tbody.appendChild(row);
     });
 }
-
+// Students table
 export function renderStudentsTable() {
     const tbody = el('#studentsTableBody');
     tbody.innerHTML = '';
@@ -154,7 +153,7 @@ export function renderStudentsTable() {
         tbody.appendChild(row);
     });
 }
-
+// Reservs table
 export function renderReservasTable() {
     const tbody = el('#reservasTableBody');
     tbody.innerHTML = '';

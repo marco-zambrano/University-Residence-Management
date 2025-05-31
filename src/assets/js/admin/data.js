@@ -50,7 +50,7 @@ export let roomsData = [
         studentId: null
     }
 ];
-
+// New rooms setter
 export function setNewRoomData(newData) {
     roomsData = [...newData]
 }
@@ -81,7 +81,7 @@ export let studentsData = [
         status: "pendiente"
     }
 ];
-
+// New students setter
 export function setNewStudentData(newData) {
     studentsData = [...newData]
 }
@@ -112,7 +112,7 @@ export let reservasData = [
         status: "pendiente"
     }
 ];
-
+// New reservations setter
 export function setNewSReservatData(newData) {
     reservasData = [...newData]
 }

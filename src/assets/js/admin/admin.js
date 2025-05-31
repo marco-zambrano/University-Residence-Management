@@ -50,7 +50,9 @@ function showSection(sectionName) {
 }
 
 // Actualizar estadísticas del dashboard
-function updateStats() {
+export function updateStats() {
+    console.log('updating');
+    
     const totalRooms = roomsData.length;
     const occupiedRooms = roomsData.filter(room => room.status === 'ocupada').length;
     const availableRooms = roomsData.filter(room => room.status === 'disponible').length;
