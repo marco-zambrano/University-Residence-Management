@@ -1,5 +1,5 @@
 import { roomsData, studentsData, reservasData } from './data.js';
-import { capitalizeFirst, currentReservasFilter, formatDate} from './admin.js';
+import { capitalizeFirst, formatDate} from './admin.js';
 import { 
     editRoom,
     deleteRoom,
@@ -7,7 +7,8 @@ import {
     deleteStudent,
     approveReserva,
     rejectReserva,
-    editReserva
+    editReserva,
+    currentReservasFilter
 } from './tables-logic.js';
 
 // helper

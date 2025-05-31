@@ -3,8 +3,11 @@ import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.j
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
 
-// helper
+// filter for the reservs table
+export let currentReservasFilter = 'todas';
+// helpers
 const el = (selector) => document.querySelector(selector);
+const els = (selector) => document.querySelectorAll(selector);
 
 // Room fns administrations
 el('#new-room-btn').addEventListener('click', openAddRoomModal);
@@ -70,4 +73,22 @@ export function rejectReserva(reservaId) { //rejects
 export function editReserva(reservaId) { //edits / or view, idk, I gotta see later what to do here
     const reserva = reservasData.find(r => r.id === reservaId);
     alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
+}
+
+// Reservs filter
+el('.todas-filter').addEventListener('click', () => filterReservas('todas'));
+el('.pendiente-filter').addEventListener('click', () => filterReservas('pendiente'));
+el('.confirmada-filter').addEventListener('click', () => filterReservas('confirmada'));
+
+// filter fn
+function filterReservas(filter) {
+    currentReservasFilter = filter; // set the new reservs current filter
+    
+    // update the actived filter css property
+    els('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    })
+    el(`.${filter}-filter`).classList.add('active');
+
+    renderReservasTable();  // render the reserv table filtered (updated)
 }

@@ -1,11 +1,11 @@
-import { roomsData, studentsData, reservasData } from './data.js';
+import { roomsData, studentsData } from './data.js';
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 
-export let currentReservasFilter = 'todas';
+// helpers
 const el = (selector) => document.querySelector(selector);
 const els = (selector) => document.querySelectorAll(selector);
 
-// Inicializar aplicación
+// initilize admin panel
 document.addEventListener('DOMContentLoaded', () => {
     showSection('dashboard');
     renderRoomsTable();
@@ -14,76 +14,55 @@ document.addEventListener('DOMContentLoaded', () => {
     updateStats();
 });
 
-
+// li item in aside
 el('.dashboard-item').addEventListener('click', () => showSection('dashboard'));
 el('.habitaciones-item').addEventListener('click', () => showSection('habitaciones'));
 el('.estudiantes-item').addEventListener('click', () => showSection('estudiantes'));
 el('.reservas-item').addEventListener('click', () => showSection('reservas'));
 
-// Navegación entre secciones
+// navegation between sections
 function showSection(sectionName) {
-    // Ocultar todas las secciones
+    // hide all the sections
     els('.content-section').forEach(section => {
         section.classList.remove('active');
     });
 
-    // Mostrar sección seleccionada
+    // show the selected section
     el(`#${sectionName}`).classList.add('active');
     
-    // Actualizar menú activo
+    // update the li item activated
     els('.menu-item').forEach(item => {
         item.classList.remove('active');
     });
-
     el(`.${sectionName}-item`).classList.add('active');
 
-    
-    // Actualizar título
+    // Update section tittle
     const titles = {
         'dashboard': 'Dashboard',
         'habitaciones': 'Gestión de Habitaciones',
         'estudiantes': 'Gestión de Estudiantes',
         'reservas': 'Gestión de Reservas'
     };
-
     el('#sectionTitle').textContent = titles[sectionName];
 }
 
-// Actualizar estadísticas del dashboard
+
+// Update dashboard stats
 export function updateStats() {
-    console.log('updating');
+    const totalRooms = roomsData.length; // total rooms
+    const occupiedRooms = roomsData.filter(room => room.status === 'ocupada').length; // occupied rooms
+    const availableRooms = roomsData.filter(room => room.status === 'disponible').length; // avaible rooms
+    const totalStudents = studentsData.filter(student => student.status === 'activo').length; // total students
     
-    const totalRooms = roomsData.length;
-    const occupiedRooms = roomsData.filter(room => room.status === 'ocupada').length;
-    const availableRooms = roomsData.filter(room => room.status === 'disponible').length;
-    const totalStudents = studentsData.filter(student => student.status === 'activo').length;
-    
-    // Actualizar las tarjetas de estadísticas
+    // Upadate stats cards values
     const statCards = els('.stat-card');
     if (statCards.length >= 4) {
-        statCards[0].querySelector('h3').textContent = totalRooms;
-        statCards[1].querySelector('h3').textContent = occupiedRooms;
-        statCards[2].querySelector('h3').textContent = availableRooms;
-        statCards[3].querySelector('h3').textContent = totalStudents;
+        statCards[0].querySelector('h3').textContent = totalRooms; // total rooms value
+        statCards[1].querySelector('h3').textContent = occupiedRooms; // occupied rooms value
+        statCards[2].querySelector('h3').textContent = availableRooms; // avaible rooms value
+        statCards[3].querySelector('h3').textContent = totalStudents; // total students value
     }
 }
-
-el('.todas-filter').addEventListener('click', () => filterReservas('todas'));
-el('.pendiente-filter').addEventListener('click', () => filterReservas('pendiente'));
-el('.confirmada-filter').addEventListener('click', () => filterReservas('confirmada'));
-
-// Filtrar reservas
-function filterReservas(filter) {
-    currentReservasFilter = filter;
-    
-    els('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-    })
-    el(`.${filter}-filter`).classList.add('active');
-
-    renderReservasTable();
-}
-
 
 // Cerrar sesión
 el('.logout-btn').addEventListener('click', logout);
