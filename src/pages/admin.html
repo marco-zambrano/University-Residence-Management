@@ -321,7 +321,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 id="studentModalTitle">Nuevo Estudiante</h3>
-                <button class="close-btn" onclick="closeStudentModal()">&times;</button>
+                <button class="close-btn close-student-btn">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="studentForm">
@@ -337,36 +337,18 @@
                         <input type="email" id="studentEmail" required placeholder="juan.perez@universidad.edu">
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="studentPhone">Teléfono:</label>
                         <input type="tel" id="studentPhone" placeholder="+34 600 123 456">
-                    </div>
+                    </div> -->
                     
-                    <div class="form-group">
-                        <label for="studentDNI">DNI/Pasaporte:</label>
+                    <!-- <div class="form-group">
+                        <label for="studentDNI">Cédula:</label>
                         <input type="text" id="studentDNI" required placeholder="12345678A">
-                    </div>
+                    </div> -->
                     
                     <div class="form-group">
-                        <label for="studentCareer">Carrera:</label>
-                        <input type="text" id="studentCareer" placeholder="Ingeniería Informática">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="studentYear">Año Académico:</label>
-                        <select id="studentYear">
-                            <option value="">Selecciona año</option>
-                            <option value="1">1º Año</option>
-                            <option value="2">2º Año</option>
-                            <option value="3">3º Año</option>
-                            <option value="4">4º Año</option>
-                            <option value="master">Máster</option>
-                            <option value="doctorado">Doctorado</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="studentRoom">Habitación Asignada:</label>
+                        <label for="studentRoom">Habitación a asignar:</label>
                         <select id="studentRoom">
                             <option value="">Sin asignar</option>
                             <!-- Se llena dinámicamente con habitaciones disponibles -->
@@ -386,16 +368,11 @@
                             <option value="inactivo">Inactivo</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="studentNotes">Notas adicionales:</label>
-                        <textarea id="studentNotes" placeholder="Información adicional sobre el estudiante..."></textarea>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary" onclick="closeStudentModal()">Cancelar</button>
-                <button class="btn-primary" onclick="saveStudent()">Guardar Estudiante</button>
+                <button class="btn-secondary close-student-btn">Cancelar</button>
+                <button class="btn-primary save-student-btn">Guardar Estudiante</button>
             </div>
         </div>
     </div>
