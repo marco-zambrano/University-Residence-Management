@@ -89,7 +89,6 @@ const createStatusBadge = (status) => {
 const createActionButtons = (id, actions) => {
     const container = document.createElement('div');
     container.className = 'action-buttons';
-    console.log(actions);
     
     actions.forEach(action => {
         container.appendChild(createActionButton(action.type, id, action.handler));

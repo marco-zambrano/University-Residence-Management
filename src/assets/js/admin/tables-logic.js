@@ -1,4 +1,6 @@
-import { roomsData, studentsData, reservasData } from './data.js';
+import { roomsData, studentsData, reservasData } from './data.js'; //variables
+import { setNewRoomData } from './data.js'; // functions
+import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 const el = (selector) => document.querySelector(selector);
 
 // Funciones de gestión de habitaciones
@@ -8,13 +10,16 @@ function openAddRoomModal() {
 }
 
 export function editRoom(roomId) {
+    console.log('EDIT ROOM');
     const room = roomsData.find(r => r.id === roomId);
     alert(`Editar habitación ${room.number} (por implementar)`);
 }
 
 export function deleteRoom(roomId) {
     if (confirm('¿Estás seguro de que quieres eliminar esta habitación?')) {
-        roomsData = roomsData.filter(r => r.id !== roomId);
+        let newRoomsData = roomsData.filter(r => r.id !== roomId);
+        setNewRoomData(newRoomsData);
+        // console.log('new room data: ', roomsData);
         renderRoomsTable();
         updateStats();
         alert('Habitación eliminada correctamente');
@@ -29,40 +34,46 @@ function openAddStudentModal() {
 }
 
 export function editStudent(studentId) {
-    const student = studentsData.find(s => s.id === studentId);
-    alert(`Editar estudiante ${student.name} (por implementar)`);
+    console.log('EDIT STUDENT');
+    // const student = studentsData.find(s => s.id === studentId);
+    // alert(`Editar estudiante ${student.name} (por implementar)`);
 }
 
 export function deleteStudent(studentId) {
-    if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
-        studentsData = studentsData.filter(s => s.id !== studentId);
-        renderStudentsTable();
-        updateStats();
-        alert('Estudiante eliminado correctamente');
-    }
+        console.log('DELETE STUDENT');
+    // if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
+    //     studentsData = studentsData.filter(s => s.id !== studentId);
+    //     renderStudentsTable();
+    //     updateStats();
+    //     alert('Estudiante eliminado correctamente');
+    // }
 }
 
 
 // Funciones de gestión de reservas
 export function approveReserva(reservaId) {
-    const reserva = reservasData.find(r => r.id === reservaId);
-    if (confirm(`¿Aprobar la reserva de ${reserva.student} para la habitación ${reserva.room}?`)) {
-        reserva.status = 'confirmada';
-        renderReservasTable();
-        alert('Reserva aprobada correctamente');
-    }
+        console.log('APPROVE RESERVATION');
+    // const reserva = reservasData.find(r => r.id === reservaId);
+    // if (confirm(`¿Aprobar la reserva de ${reserva.student} para la habitación ${reserva.room}?`)) {
+    //     reserva.status = 'confirmada';
+    //     renderReservasTable();
+    //     alert('Reserva aprobada correctamente');
+    // }
 }
 
 export function rejectReserva(reservaId) {
-    const reserva = reservasData.find(r => r.id === reservaId);
-    if (confirm(`¿Rechazar la reserva de ${reserva.student}?`)) {
-        reservasData = reservasData.filter(r => r.id !== reservaId);
-        renderReservasTable();
-        alert('Reserva rechazada');
-    }
+    console.log('REJECT RESERVATION');
+
+    // const reserva = reservasData.find(r => r.id === reservaId);
+    // if (confirm(`¿Rechazar la reserva de ${reserva.student}?`)) {
+    //     reservasData = reservasData.filter(r => r.id !== reservaId);
+    //     renderReservasTable();
+    //     alert('Reserva rechazada');
+    // }
 }
 
 export function editReserva(reservaId) {
-    const reserva = reservasData.find(r => r.id === reservaId);
-    alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
+    console.log('EDIT RESERVATION');
+    // const reserva = reservasData.find(r => r.id === reservaId);
+    // alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
 }

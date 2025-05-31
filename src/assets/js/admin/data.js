@@ -51,6 +51,10 @@ export let roomsData = [
     }
 ];
 
+export function setNewRoomData(newData) {
+    roomsData = [...newData]
+}
+    
 export let studentsData = [
     {
         id: 1,
