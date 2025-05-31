@@ -40,7 +40,6 @@ export function editStudent(studentId) {
 }
 
 export function deleteStudent(studentId) {
-        console.log('DELETE STUDENT');
     if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
         const newStudentsData = studentsData.filter(s => s.id !== studentId);
         setNewStudentData(newStudentsData);
@@ -53,28 +52,25 @@ export function deleteStudent(studentId) {
 
 // Funciones de gestión de reservas
 export function approveReserva(reservaId) {
-        console.log('APPROVE RESERVATION');
-    // const reserva = reservasData.find(r => r.id === reservaId);
-    // if (confirm(`¿Aprobar la reserva de ${reserva.student} para la habitación ${reserva.room}?`)) {
-    //     reserva.status = 'confirmada';
-    //     renderReservasTable();
-    //     alert('Reserva aprobada correctamente');
-    // }
+    const reserva = reservasData.find(r => r.id === reservaId);
+    if (confirm(`¿Aprobar la reserva de ${reserva.student} para la habitación ${reserva.room}?`)) {
+        reserva.status = 'confirmada';
+        renderReservasTable();
+        alert('Reserva aprobada correctamente');
+    }
 }
 
 export function rejectReserva(reservaId) {
-    console.log('REJECT RESERVATION');
-
-    // const reserva = reservasData.find(r => r.id === reservaId);
-    // if (confirm(`¿Rechazar la reserva de ${reserva.student}?`)) {
-    //     reservasData = reservasData.filter(r => r.id !== reservaId);
-    //     renderReservasTable();
-    //     alert('Reserva rechazada');
-    // }
+    const reserva = reservasData.find(r => r.id === reservaId);
+    if (confirm(`¿Rechazar la reserva de ${reserva.student}?`)) {
+        const newReservasData = reservasData.filter(r => r.id !== reservaId);
+        setNewSReservatData(newReservasData);
+        renderReservasTable();
+        alert('Reserva rechazada');
+    }
 }
 
 export function editReserva(reservaId) {
-    console.log('EDIT RESERVATION');
-    // const reserva = reservasData.find(r => r.id === reservaId);
-    // alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
+    const reserva = reservasData.find(r => r.id === reservaId);
+    alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
 }
