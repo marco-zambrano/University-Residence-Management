@@ -2,7 +2,7 @@ import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
-import { openAddRoomModal, editRoomModal, openAddStudentModal, editStudentModal} from './modal.js';
+import { openAddRoomModal, editRoomModal, openAddStudentModal, editStudentModal, viewReservation} from './modal/modal.js';
 
 // filter for the reservs table
 export let currentReservasFilter = 'todas';
@@ -64,9 +64,9 @@ export function rejectReserva(reservaId) { //rejects
         alert('Reserva rechazada');
     }
 }
-export function editReserva(reservaId) { //edits / or view, idk, I gotta see later what to do here
+export function viewReserva(reservaId) { //edits / or view, idk, I gotta see later what to do here
     const reserva = reservasData.find(r => r.id === reservaId);
-    alert(`Ver detalles de la reserva de ${reserva.student} (por implementar)`);
+    viewReservation(reserva)
 }
 
 // Reservs filter

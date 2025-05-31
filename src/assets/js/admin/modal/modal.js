@@ -1,7 +1,7 @@
-import { roomsData, studentsData, reservasData } from './data.js'; //variables
-import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
-import { renderRoomsTable, renderStudentsTable} from './tables.js'
-import { updateStats, capitalizeFirst} from './admin.js'
+import { roomsData, studentsData, reservasData } from '../data.js'; //variables
+import { setNewRoomData, setNewStudentData, setNewSReservatData } from '../data.js'; // functions
+import { renderRoomsTable, renderStudentsTable} from '../tables.js'
+import { updateStats, capitalizeFirst} from '../admin.js'
 
 let currentEditingRoom = null;
 let currentEditingStudent = null;
@@ -293,6 +293,19 @@ function populateRoomSelect() {
     });
 }
 
+// ============================== SHOW RESERVATION ===============================
+export function viewReservation(reserva) {
+    // Abrimos el modal de view reserva
+    el('#reservaDetailsModal').style.display = 'block';
+    
+    console.log(reserva);
+}
+
+
+
+
+
+// ================ ADTIONAL FUNCTIONS ==============================
 function showFieldError(fieldId, message) {
     const field = el(`#${fieldId}`);
     const formGroup = field.closest('.form-group');
@@ -325,13 +338,6 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-function getDaysUntil(dateString) {
-    const targetDate = new Date(dateString);
-    const today = new Date();
-    const diffTime = targetDate - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-}
 
 // Cerrar modales al hacer clic fuera
 window.onclick = function(event) {

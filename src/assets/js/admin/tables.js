@@ -7,7 +7,7 @@ import {
     deleteStudent,
     approveReserva,
     rejectReserva,
-    editReserva,
+    viewReserva,
     currentReservasFilter
 } from './tables-logic.js';
 
@@ -177,7 +177,7 @@ export function renderReservasTable() {
             { type: 'approve', handler: approveReserva },
             { type: 'reject', handler: rejectReserva }
         ] : [
-            { type: 'view', handler: editReserva }
+            { type: 'view', handler: viewReserva }
         ];
         addCell(row, createActionButtons(reserva.id, actions));
         
