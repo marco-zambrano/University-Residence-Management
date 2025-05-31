@@ -2,6 +2,7 @@ import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
+import { openAddRoomModal, editRoomModal } from './modal.js';
 
 // filter for the reservs table
 export let currentReservasFilter = 'todas';
@@ -11,14 +12,11 @@ const els = (selector) => document.querySelectorAll(selector);
 
 // Room fns administrations
 el('#new-room-btn').addEventListener('click', openAddRoomModal);
-function openAddRoomModal() { // Open room modal
-    alert('Modal para agregar nueva habitación (por implementar)');
-}
 
 export function editRoom(roomId) {  //edits
-    console.log('EDIT ROOM');
     const room = roomsData.find(r => r.id === roomId);
-    alert(`Editar habitación ${room.number} (por implementar)`);
+    editRoomModal(room.id)
+    // alert(`Editar habitación ${room.number} (por implementar)`);
 }
 export function deleteRoom(roomId) { // deletes
     if (confirm('¿Estás seguro de que quieres eliminar esta habitación?')) {
