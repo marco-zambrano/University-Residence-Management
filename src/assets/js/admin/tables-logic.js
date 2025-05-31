@@ -1,6 +1,8 @@
 import { roomsData, studentsData, reservasData } from './data.js'; //variables
-import { setNewRoomData } from './data.js'; // functions
+import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
+
+// helper
 const el = (selector) => document.querySelector(selector);
 
 // Funciones de gestión de habitaciones
@@ -17,9 +19,8 @@ export function editRoom(roomId) {
 
 export function deleteRoom(roomId) {
     if (confirm('¿Estás seguro de que quieres eliminar esta habitación?')) {
-        let newRoomsData = roomsData.filter(r => r.id !== roomId);
+        const newRoomsData = roomsData.filter(r => r.id !== roomId);
         setNewRoomData(newRoomsData);
-        // console.log('new room data: ', roomsData);
         renderRoomsTable();
         updateStats();
         alert('Habitación eliminada correctamente');
@@ -34,19 +35,19 @@ function openAddStudentModal() {
 }
 
 export function editStudent(studentId) {
-    console.log('EDIT STUDENT');
-    // const student = studentsData.find(s => s.id === studentId);
-    // alert(`Editar estudiante ${student.name} (por implementar)`);
+    const student = studentsData.find(s => s.id === studentId);
+    alert(`Editar estudiante ${student.name} (por implementar)`);
 }
 
 export function deleteStudent(studentId) {
         console.log('DELETE STUDENT');
-    // if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
-    //     studentsData = studentsData.filter(s => s.id !== studentId);
-    //     renderStudentsTable();
-    //     updateStats();
-    //     alert('Estudiante eliminado correctamente');
-    // }
+    if (confirm('¿Estás seguro de que quieres eliminar este estudiante?')) {
+        const newStudentsData = studentsData.filter(s => s.id !== studentId);
+        setNewStudentData(newStudentsData);
+        renderStudentsTable();
+        updateStats();
+        alert('Estudiante eliminado correctamente');
+    }
 }
 
 

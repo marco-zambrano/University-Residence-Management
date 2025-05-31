@@ -54,7 +54,7 @@ export let roomsData = [
 export function setNewRoomData(newData) {
     roomsData = [...newData]
 }
-    
+
 export let studentsData = [
     {
         id: 1,
@@ -82,6 +82,10 @@ export let studentsData = [
     }
 ];
 
+export function setNewStudentData(newData) {
+    studentsData = [...newData]
+}
+
 export let reservasData = [
     {
         id: 1,
@@ -108,3 +112,7 @@ export let reservasData = [
         status: "pendiente"
     }
 ];
+
+export function setNewSReservatData(newData) {
+    reservasData = [...newData]
+}
