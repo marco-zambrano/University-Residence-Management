@@ -12,7 +12,34 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStudentsTable();
     renderReservasTable();
     updateStats();
+
+    const cards = els('.stat-card, .chart-card, .recent-activity');
+
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+
+    // Responsive slidebar
+    // const sidebar = el('.sidebar');
+    // const isClickInsideSidebar = sidebar.contains(event.target);
+    
+    // if (!isClickInsideSidebar && window.innerWidth <= 1024) {
+    //     sidebar.classList.remove('open');
+    // }
 });
+
+// Responsive sidebar toggle
+// function toggleSidebar() {
+//     const sidebar = el('.sidebar');
+//     sidebar.classList.toggle('open');
+// }
 
 // li item in aside
 el('.dashboard-item').addEventListener('click', () => showSection('dashboard'));
@@ -82,37 +109,3 @@ export function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('es-ES');
 }
-
-// Responsive sidebar toggle
-function toggleSidebar() {
-    // const sidebar = document.querySelector('.sidebar');
-    const sidebar = el('.sidebar');
-    sidebar.classList.toggle('open');
-}
-
-// Cerrar sidebar al hacer clic fuera (móvil)
-document.addEventListener('click', function(event) {
-    // const sidebar = document.querySelector('.sidebar');
-    const sidebar = el('.sidebar');
-    const isClickInsideSidebar = sidebar.contains(event.target);
-    
-    if (!isClickInsideSidebar && window.innerWidth <= 1024) {
-        sidebar.classList.remove('open');
-    }
-});
-
-// Animaciones de entrada
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = els('.stat-card, .chart-card, .recent-activity');
-
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            card.style.transition = 'all 0.6s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-});

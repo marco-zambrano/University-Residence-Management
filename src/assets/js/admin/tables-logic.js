@@ -2,7 +2,7 @@ import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
-
+// modals
 import { viewReservation} from './modal/reservation-modal.js';
 import { openAddRoomModal, editRoomModal } from './modal/room-modal.js'
 import { openAddStudentModal, editStudentModal } from './modal/student-modal.js'
@@ -12,6 +12,7 @@ export let currentReservasFilter = 'todas';
 // helpers
 const el = (selector) => document.querySelector(selector);
 const els = (selector) => document.querySelectorAll(selector);
+
 
 // Room fns administrations
 el('#new-room-btn').addEventListener('click', openAddRoomModal);
@@ -67,7 +68,7 @@ export function rejectReserva(reservaId) { //rejects
         alert('Reserva rechazada');
     }
 }
-export function viewReserva(reservaId) { //edits / or view, idk, I gotta see later what to do here
+export function viewReserva(reservaId) { // view
     const reserva = reservasData.find(r => r.id === reservaId);
     viewReservation(reserva)
 }
