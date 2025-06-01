@@ -6,8 +6,10 @@ import { closeModal } from './modal.js'
 const el = (selector) => document.querySelector(selector);
 const els = (selector) => document.querySelectorAll(selector);
 let filteredRooms = [...roomsData];
-export let currentStudent = null
-// let selectedRoom = null;
+// let currentStudent = null;
+// export function getStudent(student) {
+//     currentStudent = student
+// }
 
 // Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', () => {

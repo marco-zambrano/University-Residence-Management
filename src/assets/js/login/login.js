@@ -1,4 +1,5 @@
 import {studentsData, adminsData } from '../data.js';
+// import { getStudent } from '../student/student.js';
 
 // error message node
 const errorMsg = document.getElementById('errorMsg');
@@ -13,12 +14,14 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
     // Getting users
     const student = studentsData.find(s => s.username === username && s.password === password);
     const admin = adminsData.find(a => a.username === username && a.password === password);
-
+    
     if (!student && !admin) { // user not exits
         errorMsg.textContent = 'Credenciales incorrectas';
         errorMsg.style.display = 'block';
         return;
     }
+
+    // getStudent(student || admin);
 
     // Redirecting window location
     if (admin) {
