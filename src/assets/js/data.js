@@ -65,25 +65,34 @@ export let studentsData = [
         id: 1,
         name: "Juan Pérez",
         email: "juan.perez@universidad.edu",
+        username: "perez",
+        password: "1234",
         room: "101",
         checkIn: "2024-01-15",
-        status: "activo"
+        status: "activo",
+        role: "student"
     },
     {
         id: 2,
         name: "Ana López",
         email: "ana.lopez@universidad.edu",
+        username: "alopez",
+        password: "Alopez.2024",
         room: "201",
         checkIn: "2024-02-01",
-        status: "activo"
+        status: "activo",
+        role: "student"
     },
     {
         id: 3,
         name: "Carlos Ruiz",
         email: "carlos.ruiz@universidad.edu",
+        username: "cruiz",
+        password: "Cruiz.2024",
         room: null,
         checkIn: null,
-        status: "pendiente"
+        status: "pendiente",
+        role: "student"
     }
 ];
 // New students setter
