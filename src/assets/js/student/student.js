@@ -64,7 +64,7 @@ function filterRooms() {
 
         const matchesSearch = !searchTerm || 
             room.number.toString().includes(searchTerm) || 
-            room.capacity.toString().includes(searchTerm) ||
+            room.building.toString().includes(searchTerm) ||
             room.amenities.some(amenity => amenity.toLowerCase().includes(searchTerm));
         
         return matchesCapacity && matchesPiso && matchesSearch;
