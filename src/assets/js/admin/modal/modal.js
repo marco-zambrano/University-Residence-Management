@@ -1,8 +1,3 @@
-import { roomsData, studentsData } from '../data.js'; //variables
-import { setNewRoomData, setNewStudentData } from '../data.js'; // functions
-import { renderRoomsTable, renderStudentsTable} from '../tables.js'
-import { updateStats } from '../admin.js'
-
 export let currentEditingRoom = null;
 export const setcurrentEditingRoom = (newValue) => currentEditingRoom = newValue;
 export let currentEditingStudent = null;
@@ -42,7 +37,6 @@ export function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
-
 
 // Cerrar modales al hacer clic fuera
 window.onclick = function(event) {
