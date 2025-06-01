@@ -1,7 +1,6 @@
 import { 
     currentEditingStudent, 
-    setCurrentEditingStudent, 
-    populateRoomSelect, 
+    setCurrentEditingStudent,
     clearFormErrors, 
     showFieldError,
     isValidEmail } from './modal.js';
@@ -119,7 +118,7 @@ function saveStudent() {
     closeStudentModal();
 }
 
-export function validateStudentForm() {
+function validateStudentForm() {
     
     let isValid = true;
     clearFormErrors('studentForm');
@@ -151,4 +150,20 @@ export function validateStudentForm() {
     }
     
     return isValid;
+}
+
+function populateRoomSelect() {
+    const select = el('#studentRoom');
+    
+    // Solo habitaciones disponibles
+    const availableRooms = roomsData.filter(room => 
+        room.status === 'disponible' || (currentEditingStudent && room.number === currentEditingStudent.room)
+    );
+    
+    availableRooms.forEach(room => {
+        const option = document.createElement('option');
+        option.value = room.number;
+        option.textContent = `${room.number} - ${room.capacity} (€${room.price}/mes)`;
+        select.appendChild(option);
+    });
 }

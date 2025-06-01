@@ -3,7 +3,7 @@ import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.j
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
 
-import { viewReservation} from './modal/modal.js';
+import { viewReservation} from './modal/reservation-modal.js';
 import { openAddRoomModal, editRoomModal } from './modal/room-modal.js'
 import { openAddStudentModal, editStudentModal } from './modal/student-modal.js'
 
