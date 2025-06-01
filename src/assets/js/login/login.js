@@ -1,3 +1,6 @@
+
+
+
 // JSON with all the credentials (simulating a possible DB implementation) - saving it in local storage
 if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify([

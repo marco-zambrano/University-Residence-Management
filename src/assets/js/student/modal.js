@@ -77,7 +77,6 @@ export const openReservationModal = (roomId) => {
     reserveButton.textContent = 'Confirmar Reserva';
     reserveButton.addEventListener('click', () => {
         confirmarReserva(selectedRoom.id);
-        closeModal();
     });
 
     modalFotter.appendChild(closeButton);
@@ -102,7 +101,7 @@ export const openReservationModal = (roomId) => {
 el('.close-btn').addEventListener('click', closeModal);
 
 // // Cerrar modal
-function closeModal() {
+export function closeModal() {
     const modal = el('#reservaModal');
 
     modal.style.display = 'none';

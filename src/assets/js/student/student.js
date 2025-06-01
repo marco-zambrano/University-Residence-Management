@@ -1,10 +1,12 @@
 // Datos de habitaciones simulados
-import { roomsData } from '../data.js'
+import { roomsData, setNewSReservasData, reservasData } from '../data.js'
 import { createRoomCard } from './dom.js'
+import { closeModal } from './modal.js'
 
 const el = (selector) => document.querySelector(selector);
 const els = (selector) => document.querySelectorAll(selector);
 let filteredRooms = [...roomsData];
+export let currentStudent = null
 // let selectedRoom = null;
 
 // Inicializar la aplicación
@@ -86,34 +88,42 @@ export function confirmarReserva(roomId) {
     
     let selectedRoom = roomsData.find(room => room.id === roomId);
     if (!fechaIngreso || !duracion) {
-        alert('Por favor, completa todos los campos obligatorios.');
+        alert('Por favor, completa la fecha de ingreso y duración como mínimo.');
         return;
     }
 
     console.log(selectedRoom);
     
     
-    // // Simular proceso de reserva
-    // const reservaData = {
-    //     room: selectedRoom,
-    //     fechaIngreso: fechaIngreso,
-    //     duracion: duracion,
-    //     comentarios: comentarios,
-    //     fecha: new Date().toISOString()
-    // };
+    // Simular proceso de reserva
+    const reservaData = {
+        id: Date.now(),
+        // student: currentStudent.name, // SIMULACION
+        student: 'test student',
+        room: selectedRoom.number,
+        requestDate: fechaIngreso,
+        duracion: duracion,
+        status: 'pendiente',
+        comments: comentarios || null,
+    };
     
     // console.log('Datos de reserva:', reservaData);
     
-    // // Simular éxito
-    // alert(`¡Reserva exitosa!\n\nHabitación: ${selectedRoom.number}\nFecha de ingreso: ${fechaIngreso}\nDuración: ${duracion}\n\nRecibirás un email de confirmación en breve.`);
+    // Simular éxito
+    alert(`¡Reserva exitosa!\n\nHabitación: ${selectedRoom.number}\nFecha de ingreso: ${fechaIngreso}\nDuración: ${duracion}\n\nRecibirás un email de confirmación en breve.`);
     
-    // Marcar habitación como ocupada (simulación)
-    // selectedRoom.status = 'ocupada';
-    
+    // Marcar habitación como ocupada
+    selectedRoom.status = 'ocupada';
+
+    const newReservaData = [...reservasData]
+    newReservaData.push(reservaData);
+    setNewSReservasData(newReservaData)
+    // console.log(reservasData);
+
     // Cerrar modal y actualizar vista
-    // closeModal();
-    // renderRooms();
-    // updateRoomCount();
+    closeModal();
+    renderRooms();
+    updateRoomCount();
 }
 
 // log Out

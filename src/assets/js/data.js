@@ -97,7 +97,7 @@ export let reservasData = [
         student: "María García",
         room: "102",
         requestDate: "2024-01-20",
-        duracion: null,
+        duracion: "2semanas",
         status: "pendiente",
         comments: null,
     },
@@ -115,12 +115,21 @@ export let reservasData = [
         student: "Laura Sánchez",
         room: "301",
         requestDate: "2024-01-22",
-        duracion: null,
+        duracion: "1 seamana",
         status: "pendiente",
         comments: null,
     }
 ];
 // New reservations setter
-export function setNewSReservatData(newData) {
+export function setNewSReservasData(newData) {
     reservasData = [...newData]
 }
+
+export let adminsData = [
+    {
+        id: 1,
+        username: "admin",
+        password: "admin123",
+        role: "admin"
+    }
+]
