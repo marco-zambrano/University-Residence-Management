@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
     server: {
-        open: 'src/pages/dashboard.html',
+        open: 'src/pages/login.html',
     },
     build: {
         rollupOptions: {

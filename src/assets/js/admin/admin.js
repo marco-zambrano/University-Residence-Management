@@ -95,8 +95,7 @@ export function updateStats() {
 el('.logout-btn').addEventListener('click', logout);
 function logout() {
     if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-        console.log('redireccionando');
-        // window.location.href = './../../../pages/dashboard.html';
+        window.location.href = '/src/pages/login.html';
     }
 }
 

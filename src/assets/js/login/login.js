@@ -25,6 +25,13 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
         errorMsg.style.display = 'block';
         return;
     }
+
+    // Redirecting window location
+    if (user.role === 'admin') {
+        window.location.href = '/src/pages/admin.html';
+    } else {
+        window.location.href = '/src/pages/student.html';
+    }
     errorMsg.style.display = 'none';
 });
 
