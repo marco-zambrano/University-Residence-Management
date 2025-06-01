@@ -1,6 +1,6 @@
 // import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { roomsData, studentsData, reservasData } from '../data.js'; // variables
-import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
+import { setNewRoomData, setNewStudentData, setNewReservasData } from '../data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
 // modals
@@ -64,7 +64,7 @@ export function rejectReserva(reservaId) { //rejects
     const reserva = reservasData.find(r => r.id === reservaId);
     if (confirm(`¿Rechazar la reserva de ${reserva.student}?`)) {
         const newReservasData = reservasData.filter(r => r.id !== reservaId);
-        setNewSReservatData(newReservasData);
+        setNewReservasData(newReservasData);
         renderReservasTable();
         alert('Reserva rechazada');
     }

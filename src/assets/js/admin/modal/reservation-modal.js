@@ -41,17 +41,32 @@ export function viewReservation(reserva) {
     //  Checkin Date
     const checkinContainer = document.createElement('div');
     const checkinTitle = document.createElement('h3');
-    checkinTitle.textContent = 'Fecha de Ingreso:';
+    checkinTitle.textContent = 'Duración de reserva:';
     const checkinContent = document.createElement('p');
-    checkinContent.textContent = reserva.checkInDate;
+    checkinContent.textContent = reserva.duracion;
 
     checkinContainer.appendChild(checkinTitle);
     checkinContainer.appendChild(checkinContent);
 
+    
     bodyContent.appendChild(studentContainer);
     bodyContent.appendChild(roomContainer);
     bodyContent.appendChild(requestContainer);
     bodyContent.appendChild(checkinContainer);
+
+    if (reserva.comments) {
+        //  Comments
+        const commentsContainer = document.createElement('div');
+        const commentsTitle = document.createElement('h3');
+        commentsTitle.textContent = 'Comentarios:';
+        const commentsContent = document.createElement('p');
+        commentsContent.textContent = reserva.comments;
+
+        commentsContainer.appendChild(commentsTitle);
+        commentsContainer.appendChild(commentsContent);
+
+        bodyContent.appendChild(commentsContainer);
+    }
 }
 
 el('.close-reseva-btn').addEventListener('click', closeReservationModal);

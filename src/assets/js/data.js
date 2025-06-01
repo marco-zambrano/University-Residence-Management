@@ -130,7 +130,7 @@ export let reservasData = [
     }
 ];
 // New reservations setter
-export function setNewSReservasData(newData) {
+export function setNewReservasData(newData) {
     reservasData = [...newData]
 }
 

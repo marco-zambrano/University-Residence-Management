@@ -1,5 +1,5 @@
 // Datos de habitaciones simulados
-import { roomsData, setNewSReservasData, reservasData } from '../data.js'
+import { roomsData, setNewReservasData, reservasData } from '../data.js'
 import { createRoomCard } from './dom.js'
 import { closeModal } from './modal.js'
 
@@ -119,7 +119,7 @@ export function confirmarReserva(roomId) {
 
     const newReservaData = [...reservasData]
     newReservaData.push(reservaData);
-    setNewSReservasData(newReservaData)
+    setNewReservasData(newReservaData)
     // console.log(reservasData);
 
     // Cerrar modal y actualizar vista
