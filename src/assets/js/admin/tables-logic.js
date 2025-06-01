@@ -2,7 +2,10 @@ import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { setNewRoomData, setNewStudentData, setNewSReservatData } from './data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 import {updateStats} from './admin.js';
-import { openAddRoomModal, editRoomModal, openAddStudentModal, editStudentModal, viewReservation} from './modal/modal.js';
+
+import { viewReservation} from './modal/modal.js';
+import { openAddRoomModal, editRoomModal } from './modal/room-modal.js'
+import { openAddStudentModal, editStudentModal } from './modal/student-modal.js'
 
 // filter for the reservs table
 export let currentReservasFilter = 'todas';
