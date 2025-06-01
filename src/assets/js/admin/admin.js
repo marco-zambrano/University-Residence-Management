@@ -1,4 +1,5 @@
-import { roomsData, studentsData } from './data.js';
+// import { roomsData, studentsData } from './data.js';
+import { roomsData, studentsData } from '../data.js';
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';
 
 // helpers

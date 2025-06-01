@@ -1,5 +1,5 @@
 import { currentEditingRoom, setcurrentEditingRoom, clearFormErrors, showFieldError } from './modal.js'
-import { roomsData, setNewRoomData } from '../data.js';
+import { roomsData, setNewRoomData } from '../../data.js';
 import { renderRoomsTable } from '../tables.js';
 import { updateStats } from '../admin.js'
 
@@ -26,7 +26,7 @@ export function editRoomModal(roomId) {
     // // Llenar formulario con datos existentes
     el('#roomId').value = currentEditingRoom.id;
     el('#roomNumber').value = currentEditingRoom.number;
-    el('#roomCapacity').value = currentEditingRoom.capacity;
+    el('#roomBuilding').value = currentEditingRoom.building;
     el('#roomFloor').value = currentEditingRoom.floor;
     el('#roomPrice').value = currentEditingRoom.price;
     el('#roomStatus').value = currentEditingRoom.status;
@@ -54,7 +54,7 @@ function saveRoom() {
     const roomData = {
         id: currentEditingRoom ? currentEditingRoom.id : Date.now(),
         number: el('#roomNumber').value,
-        capacity: el('#roomCapacity').value,
+        building: el('#roomBuilding').value,
         floor: parseInt(el('#roomFloor').value),
         price: parseInt(el('#roomPrice').value),
         status: el('#roomStatus').value,
@@ -84,7 +84,7 @@ function validateRoomForm() {
     clearFormErrors('roomForm');
     
     const number = el('#roomNumber').value;
-    const capacity = el('#roomCapacity').value;
+    const capacity = el('#roomBuilding').value;
     const floor = el('#roomFloor').value;
     const price = el('#roomPrice').value;
     const status = el('#roomStatus').value;
@@ -105,7 +105,7 @@ function validateRoomForm() {
     }
     
     if (!capacity) {
-        showFieldError('roomCapacity', 'El tipo de habitación es obligatorio');
+        showFieldError('roomBuilding', 'El edificio es obligatorio');
         isValid = false;
     }
     

@@ -1,4 +1,6 @@
-import { roomsData, studentsData, reservasData } from './data.js';
+// import { roomsData, studentsData, reservasData } from './data.js';
+import { roomsData, studentsData, reservasData } from '../data.js';
+
 import { capitalizeFirst, formatDate} from './admin.js';
 import { 
     editRoom,
@@ -116,7 +118,7 @@ export function renderRoomsTable() {
         const row = document.createElement('tr');
         
         addCell(row, `<strong>${escapeHtml(room.number)}</strong>`);
-        addCell(row, escapeHtml(room.capacity));
+        addCell(row, escapeHtml(room.building));
         addCell(row, `Piso ${escapeHtml(room.floor)}`);
         addCell(row, createStatusBadge(room.status));
         addCell(row, `€${escapeHtml(room.price)}/mes`);
