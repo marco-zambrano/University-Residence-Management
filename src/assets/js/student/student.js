@@ -114,10 +114,10 @@ function confirmarReserva() {
     // updateRoomCount();
 }
 
-// // Cerrar sesión
-// el('.logout-btn').addEventListener('click', logout);
-// function logout() {
-//     if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-//         window.location.href = 'index.html';
-//     }
-// }
+// log Out
+el('.logout-btn').addEventListener('click', logout);
+function logout() {
+    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+        window.location.href = '/src/pages/login.html';
+    }
+}
