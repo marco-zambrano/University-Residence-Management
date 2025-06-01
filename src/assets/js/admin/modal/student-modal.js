@@ -3,8 +3,8 @@ import {
     setCurrentEditingStudent, 
     populateRoomSelect, 
     clearFormErrors, 
-    showFieldError, 
-    validateStudentForm } from './modal.js';
+    showFieldError,
+    isValidEmail } from './modal.js';
 
 import { studentsData, setNewStudentData, roomsData } from '../data.js';
 import { renderRoomsTable, renderStudentsTable } from '../tables.js';
@@ -117,4 +117,38 @@ function saveStudent() {
     renderRoomsTable();
     updateStats();
     closeStudentModal();
+}
+
+export function validateStudentForm() {
+    
+    let isValid = true;
+    clearFormErrors('studentForm');
+    
+    const name = el('#studentName').value;
+    const email = el('#studentEmail').value;
+    
+    // Validar email único
+    const existingStudent = studentsData.find(student => 
+        student.email === email && (!currentEditingStudent || student.id !== currentEditingStudent.id)
+    );
+    
+    if (existingStudent) {
+        showFieldError('studentEmail', 'Este email ya está registrado');
+        isValid = false;
+    }
+    
+    if (!name) {
+        showFieldError('studentName', 'El nombre es obligatorio');
+        isValid = false;
+    }
+    
+    if (!email) {
+        showFieldError('studentEmail', 'El email es obligatorio');
+        isValid = false;
+    } else if (!isValidEmail(email)) {
+        showFieldError('studentEmail', 'El email no es válido');
+        isValid = false;
+    }
+    
+    return isValid;
 }

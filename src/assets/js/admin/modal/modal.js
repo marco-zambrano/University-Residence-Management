@@ -115,45 +115,45 @@ const el = (selector) => document.querySelector(selector);
 //     closeStudentModal();
 // }
 
-export function validateStudentForm() {
+// export function validateStudentForm() {
     
-    let isValid = true;
-    clearFormErrors('studentForm');
+//     let isValid = true;
+//     clearFormErrors('studentForm');
     
-    const name = el('#studentName').value;
-    const email = el('#studentEmail').value;
-    const status = el('#studentStatus').value;
+//     const name = el('#studentName').value;
+//     const email = el('#studentEmail').value;
+//     const status = el('#studentStatus').value;
     
-    // Validar email único
-    const existingStudent = studentsData.find(student => 
-        student.email === email && (!currentEditingStudent || student.id !== currentEditingStudent.id)
-    );
+//     // Validar email único
+//     const existingStudent = studentsData.find(student => 
+//         student.email === email && (!currentEditingStudent || student.id !== currentEditingStudent.id)
+//     );
     
-    if (existingStudent) {
-        showFieldError('studentEmail', 'Este email ya está registrado');
-        isValid = false;
-    }
+//     if (existingStudent) {
+//         showFieldError('studentEmail', 'Este email ya está registrado');
+//         isValid = false;
+//     }
     
-    if (!name) {
-        showFieldError('studentName', 'El nombre es obligatorio');
-        isValid = false;
-    }
+//     if (!name) {
+//         showFieldError('studentName', 'El nombre es obligatorio');
+//         isValid = false;
+//     }
     
-    if (!email) {
-        showFieldError('studentEmail', 'El email es obligatorio');
-        isValid = false;
-    } else if (!isValidEmail(email)) {
-        showFieldError('studentEmail', 'El email no es válido');
-        isValid = false;
-    }
+//     if (!email) {
+//         showFieldError('studentEmail', 'El email es obligatorio');
+//         isValid = false;
+//     } else if (!isValidEmail(email)) {
+//         showFieldError('studentEmail', 'El email no es válido');
+//         isValid = false;
+//     }
     
-    if (!status) {
-        showFieldError('studentStatus', 'El estado es obligatorio');
-        isValid = false;
-    }
+//     if (!status) {
+//         showFieldError('studentStatus', 'El estado es obligatorio');
+//         isValid = false;
+//     }
     
-    return isValid;
-}
+//     return isValid;
+// }
 
 export function populateRoomSelect() {
     const select = el('#studentRoom');
@@ -263,7 +263,7 @@ export function clearFormErrors(formId) {
     errorMessages.forEach(message => message.style.display = 'none');
 }
 
-function isValidEmail(email) {
+export function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
