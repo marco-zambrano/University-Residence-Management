@@ -1,11 +1,13 @@
-import { roomsData } from './roomsData.js'
+import { roomsData } from '../data.js'
+import { confirmarReserva } from './student.js'
 
 const el = (selector) => document.querySelector(selector);
+let selectedRoom = null;
 
 // Abrir modal de reserva (versión moderna)
 export const openReservationModal = (roomId) => {
     // Encontrar la habitación seleccionada
-    let selectedRoom = roomsData.find(room => room.id === roomId);
+    selectedRoom = roomsData.find(room => room.id === roomId);
 
     const modal = el('#reservaModal');
     const modalDetails = el('#modalRoomDetails');
@@ -13,7 +15,7 @@ export const openReservationModal = (roomId) => {
     // Limpiar contenido previo
     modalDetails.replaceChildren();
     
-    // Crear elementos del modal de forma programática
+    // Room card contenedor
     const roomCard = document.createElement('div');
     roomCard.className = 'room-card';
     roomCard.style.marginBottom = '1.5rem';
@@ -27,7 +29,7 @@ export const openReservationModal = (roomId) => {
     roomNumber.textContent = `Habitación ${selectedRoom.number}`;
     
     const roomStatus = document.createElement('div');
-    roomStatus.className = 'room-status status-disponible';
+    roomStatus.className = 'room-status status-disponible'; // ya que solo se abren los modales de habitaciones disponibles
     roomStatus.textContent = 'Disponible';
     
     roomHeader.append(roomNumber, roomStatus);
@@ -47,10 +49,10 @@ export const openReservationModal = (roomId) => {
         detail.append(strong, document.createTextNode(value));
         return detail;
     };
-    
+
     // Añadir detalles
     roomDetails.append(
-        createDetailElement('Capacidad', selectedRoom.capacity),
+        createDetailElement('Edificio', selectedRoom.building),
         createDetailElement('Ubicación', `Piso ${selectedRoom.floor}`),
         createDetailElement('Precio', `€${selectedRoom.price}/mes`),
         createDetailElement('Incluye', selectedRoom.amenities.join(', '))
@@ -60,6 +62,27 @@ export const openReservationModal = (roomId) => {
     roomCard.append(roomHeader, roomDetails);
     modalDetails.appendChild(roomCard);
     
+    const modalFotter = el('.modal-footer');
+    modalFotter.innerHTML = '' // Limpiar contenido previo
+    
+    // construir los botones del modal
+    const closeButton = document.createElement('button');
+    closeButton.className = 'btn-secondary';
+    closeButton.textContent = 'Cerrar';
+    closeButton.dataset.roomId = selectedRoom.id;
+    closeButton.addEventListener('click', closeModal);
+    
+    const reserveButton = document.createElement('button');
+    reserveButton.className = 'btn-primary';
+    reserveButton.textContent = 'Confirmar Reserva';
+    reserveButton.addEventListener('click', () => {
+        confirmarReserva(selectedRoom.id);
+        closeModal();
+    });
+
+    modalFotter.appendChild(closeButton);
+    modalFotter.appendChild(reserveButton);
+
     // Mostrar modal
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -77,7 +100,6 @@ export const openReservationModal = (roomId) => {
 };
 
 el('.close-btn').addEventListener('click', closeModal);
-el('.btn-secondary').addEventListener('click', closeModal);
 
 // // Cerrar modal
 function closeModal() {

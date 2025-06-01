@@ -54,7 +54,7 @@ export const createRoomCard = (room) => {
             'stroke-linecap': 'round',
             'stroke-linejoin': 'round'
         }]),
-        `Capacidad: ${room.capacity}`
+        `${room.building}`
     );
     
     const floorDetail = createDetail(

@@ -1,5 +1,5 @@
 // Datos de habitaciones simulados
-import { roomsData } from './roomsData.js'
+import { roomsData } from '../data.js'
 import { createRoomCard } from './dom.js'
 
 const el = (selector) => document.querySelector(selector);
@@ -8,7 +8,7 @@ let filteredRooms = [...roomsData];
 // let selectedRoom = null;
 
 // Inicializar la aplicación
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     renderRooms();
     updateRoomCount();
     
@@ -78,18 +78,20 @@ function updateRoomCount() {
     countElement.textContent = `${filteredRooms.length} habitaciones encontradas (${disponibles} disponibles)`;
 }
 
-el('.btn-primary').addEventListener('click', confirmarReserva);
 // Confirmar reserva
-function confirmarReserva() {
-    // const fechaIngreso = el('#fechaIngreso').value;
-    // const duracion = el('#duracion').value;
-    // const comentarios = el('#comentarios').value;
+export function confirmarReserva(roomId) {
+    const fechaIngreso = el('#fechaIngreso').value;
+    const duracion = el('#duracion').value;
+    const comentarios = el('#comentarios').value;
     
-    // let selectedRoom = roomsData.find(room => room.id === roomId);
-    // if (!fechaIngreso || !duracion) {
-    //     alert('Por favor, completa todos los campos obligatorios.');
-    //     return;
-    // }
+    let selectedRoom = roomsData.find(room => room.id === roomId);
+    if (!fechaIngreso || !duracion) {
+        alert('Por favor, completa todos los campos obligatorios.');
+        return;
+    }
+
+    console.log(selectedRoom);
+    
     
     // // Simular proceso de reserva
     // const reservaData = {
