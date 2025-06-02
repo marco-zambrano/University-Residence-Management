@@ -106,7 +106,7 @@ export let reservasData = [
         student: "María García",
         room: "102",
         requestDate: "2024-01-20",
-        duracion: "2semanas",
+        duracion: "2 semanas",
         status: "pendiente",
         comments: null,
     },
@@ -124,7 +124,7 @@ export let reservasData = [
         student: "Laura Sánchez",
         room: "301",
         requestDate: "2024-01-22",
-        duracion: "1 seamana",
+        duracion: "1 semana",
         status: "pendiente",
         comments: null,
     }

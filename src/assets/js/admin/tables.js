@@ -172,7 +172,7 @@ export function renderReservasTable() {
         addCell(row, `<strong>${escapeHtml(reserva.student)}</strong>`);
         addCell(row, escapeHtml(reserva.room));
         addCell(row, formatDate(reserva.requestDate));
-        addCell(row, formatDate(reserva.checkInDate));
+        addCell(row, reserva.duracion);
         addCell(row, createStatusBadge(reserva.status));
         
         const actions = reserva.status === 'pendiente' ? [

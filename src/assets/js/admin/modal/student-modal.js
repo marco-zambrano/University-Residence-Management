@@ -5,7 +5,7 @@ import {
     showFieldError,
     isValidEmail } from './modal.js';
 
-import { studentsData, setNewStudentData, roomsData } from '../data.js';
+import { studentsData, setNewStudentData, roomsData } from '../../data.js';
 import { renderRoomsTable, renderStudentsTable } from '../tables.js';
 import { updateStats } from '../admin.js'
 
@@ -68,6 +68,9 @@ function saveStudent() {
         room: el('#studentRoom').value || null,
         checkIn: el('#studentCheckIn').value || null,
         status: el('#studentStatus').value,
+        role: 'student',
+        username: el('#studentEmail').value.split(' ')[0],   // Username based on email
+        password: 'defaultPassword123',
     };
     
     // Agregar o actualizar en datos extendidos
@@ -109,6 +112,8 @@ function saveStudent() {
             room.student = studentData.name;
             room.studentId = studentData.id;
         }
+        console.log(room);
+        
     }
     
     // Actualizar vistas
@@ -154,16 +159,20 @@ function validateStudentForm() {
 
 function populateRoomSelect() {
     const select = el('#studentRoom');
+    select.innerHTML = ''; // Limpiar opciones existentes
     
     // Solo habitaciones disponibles
     const availableRooms = roomsData.filter(room => 
         room.status === 'disponible' || (currentEditingStudent && room.number === currentEditingStudent.room)
     );
+    const option = document.createElement('option');
+    option.value = '';
+    select.appendChild(option);
     
     availableRooms.forEach(room => {
         const option = document.createElement('option');
         option.value = room.number;
-        option.textContent = `${room.number} - ${room.capacity} (€${room.price}/mes)`;
+        option.textContent = `${room.number} - ${room.building} (€${room.price}/mes)`;
         select.appendChild(option);
     });
 }

@@ -54,17 +54,17 @@ el('#searchRoom').addEventListener('keyup', filterRooms);
 
 // Filtrar habitaciones
 function filterRooms() {
-    const capacity = el('#capacity').value;
+    const building = el('#capacity').value;
     const pisoFilter = el('#piso').value;
     const searchTerm = el('#searchRoom').value;
     
     filteredRooms = roomsData.filter(room => {
-        const matchesCapacity = !capacity || room.capacity.toString() === capacity;
+        const matchesCapacity = !building || room.building === building;
         const matchesPiso = !pisoFilter || room.floor.toString() === pisoFilter;
 
         const matchesSearch = !searchTerm || 
             room.number.toString().includes(searchTerm) || 
-            room.building.toString().includes(searchTerm) ||
+            room.building.includes(searchTerm) ||
             room.amenities.some(amenity => amenity.toLowerCase().includes(searchTerm));
         
         return matchesCapacity && matchesPiso && matchesSearch;
