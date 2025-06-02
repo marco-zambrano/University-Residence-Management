@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Establecer fecha mínima como hoy en el input date
     const today = new Date().toISOString().split('T')[0];
     el('#fechaIngreso').min = today;
-});S
+});
 
 // Renderizar habitaciones
 function renderRooms() {
