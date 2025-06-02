@@ -1,4 +1,3 @@
-// import { roomsData, studentsData, reservasData } from './data.js'; //variables
 import { roomsData, studentsData, reservasData } from '../data.js'; // variables
 import { setNewRoomData, setNewStudentData, setNewReservasData } from '../data.js'; // functions
 import { renderRoomsTable, renderStudentsTable, renderReservasTable } from './tables.js';

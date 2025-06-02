@@ -26,21 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'translateY(0)';
         }, index * 100);
     });
-
-    // Responsive slidebar
-    // const sidebar = el('.sidebar');
-    // const isClickInsideSidebar = sidebar.contains(event.target);
-    
-    // if (!isClickInsideSidebar && window.innerWidth <= 1024) {
-    //     sidebar.classList.remove('open');
-    // }
 });
 
-// Responsive sidebar toggle
-// function toggleSidebar() {
-//     const sidebar = el('.sidebar');
-//     sidebar.classList.toggle('open');
-// }
 
 // li item in aside
 el('.dashboard-item').addEventListener('click', () => showSection('dashboard'));

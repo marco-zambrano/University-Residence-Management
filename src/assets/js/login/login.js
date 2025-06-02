@@ -1,5 +1,4 @@
 import {studentsData, adminsData } from '../data.js';
-// import { getStudent } from '../student/student.js';
 
 // error message node
 const errorMsg = document.getElementById('errorMsg');
@@ -20,8 +19,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
         errorMsg.style.display = 'block';
         return;
     }
-
-    // getStudent(student || admin);
 
     // Redirecting window location
     if (admin) {

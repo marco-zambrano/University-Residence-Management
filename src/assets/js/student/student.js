@@ -6,10 +6,6 @@ import { closeModal } from './modal.js'
 const el = (selector) => document.querySelector(selector);
 const els = (selector) => document.querySelectorAll(selector);
 let filteredRooms = [...roomsData];
-// let currentStudent = null;
-// export function getStudent(student) {
-//     currentStudent = student
-// }
 
 // Inicializar la aplicación
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Establecer fecha mínima como hoy en el input date
     const today = new Date().toISOString().split('T')[0];
     el('#fechaIngreso').min = today;
-});
+});S
 
 // Renderizar habitaciones
 function renderRooms() {
@@ -93,14 +89,10 @@ export function confirmarReserva(roomId) {
         alert('Por favor, completa la fecha de ingreso y duración como mínimo.');
         return;
     }
-
-    console.log(selectedRoom);
-    
     
     // Simular proceso de reserva
     const reservaData = {
         id: Date.now(),
-        // student: currentStudent.name, // SIMULACION
         student: 'test student',
         room: selectedRoom.number,
         requestDate: fechaIngreso,

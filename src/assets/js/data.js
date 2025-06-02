@@ -106,7 +106,7 @@ export let reservasData = [
         student: "María García",
         room: "102",
         requestDate: "2024-01-20",
-        duracion: "2 semanas",
+        duracion: "2 semestres",
         status: "pendiente",
         comments: null,
     },
@@ -115,7 +115,7 @@ export let reservasData = [
         student: "Pedro Martín",
         room: "202",
         requestDate: "2024-01-18",
-        duracion: "1 semana",
+        duracion: "1 semestre",
         status: "confirmada",
         comments: "Me gustaria buen wifi",
     },
@@ -124,7 +124,7 @@ export let reservasData = [
         student: "Laura Sánchez",
         room: "301",
         requestDate: "2024-01-22",
-        duracion: "1 semana",
+        duracion: "1 semestre",
         status: "pendiente",
         comments: null,
     }
@@ -139,6 +139,7 @@ export let adminsData = [
         id: 1,
         username: "admin",
         password: "admin123",
-        role: "admin"
+        role: "admin",
+        name: "María González",
     }
 ]

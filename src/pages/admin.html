@@ -73,7 +73,6 @@
             </div>
         </header>
 
-        <!-- Dashboard Section -->
         <section id="dashboard" class="content-section active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -129,7 +128,6 @@
             </div>
         </section>
 
-        <!-- Habitaciones Section -->
         <section id="habitaciones" class="content-section">
             <div class="section-header">
                 <h2>Gestión de Habitaciones</h2>
@@ -156,13 +154,13 @@
                         </tr>
                     </thead>
                     <tbody id="roomsTableBody">
-                        <!-- Generado dinámicamente -->
+                        
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Estudiantes Section -->
+        
         <section id="estudiantes" class="content-section">
             <div class="section-header">
                 <h2>Gestión de Estudiantes</h2>
@@ -188,13 +186,13 @@
                         </tr>
                     </thead>
                     <tbody id="studentsTableBody">
-                        <!-- Generado dinámicamente -->
+                        
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Reservas Section -->
+        
         <section id="reservas" class="content-section">
             <div class="section-header">
                 <h2>Gestión de Reservas</h2>
@@ -218,16 +216,16 @@
                         </tr>
                     </thead>
                     <tbody id="reservasTableBody">
-                        <!-- Generado dinámicamente -->
+                        
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
 
-    <!-- Modales se agregarían aquí -->
+    
 
-    <!-- Modal Agregar/Editar Habitación -->
+    
     <div class="modal" id="roomModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -240,7 +238,7 @@
                     
                     <div class="form-group">
                         <label for="roomNumber">Número de Habitación:</label>
-                        <input type="text" id="roomNumber" required placeholder="Ej: 101, 202, etc.">
+                        <input type="number" id="roomNumber" required placeholder="Ej: 101, 202, etc." min="0">
                     </div>
                     
                     <div class="form-group">
@@ -260,7 +258,6 @@
                             <option value="1">Piso 1</option>
                             <option value="2">Piso 2</option>
                             <option value="3">Piso 3</option>
-                            <option value="4">Piso 4</option>
                         </select>
                     </div>
                     
@@ -306,7 +303,7 @@
         </div>
     </div>
 
-    <!-- Modal Agregar/Editar Estudiante -->
+    
     <div class="modal" id="studentModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -331,7 +328,7 @@
                         <label for="studentRoom">Habitación a asignar:</label>
                         <select id="studentRoom">
                             <option value="">Sin asignar</option>
-                            <!-- Se llena dinámicamente con habitaciones disponibles -->
+                            
                         </select>
                     </div>
                     
@@ -345,7 +342,6 @@
                         <select id="studentStatus" required>
                             <option value="activo">Activo</option>
                             <option value="pendiente">Pendiente</option>
-                            <option value="inactivo">Inactivo</option>
                         </select>
                     </div>
                 </form>
@@ -357,7 +353,7 @@
         </div>
     </div>
 
-    <!-- Modal Ver Detalles de Reserva -->
+    
     <div class="modal" id="reservaDetailsModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -366,7 +362,7 @@
             </div>
             <div class="modal-body">
                 <div id="reservaDetailsContent">
-                    <!-- Se llena dinámicamente -->
+                    
                 </div>
             </div>
         </div>

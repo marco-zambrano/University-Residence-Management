@@ -84,7 +84,7 @@ function validateRoomForm() {
     clearFormErrors('roomForm');
     
     const number = el('#roomNumber').value;
-    const capacity = el('#roomBuilding').value;
+    const building = el('#roomBuilding').value;
     const floor = el('#roomFloor').value;
     const price = el('#roomPrice').value;
     const status = el('#roomStatus').value;
@@ -104,7 +104,7 @@ function validateRoomForm() {
         isValid = false;
     }
     
-    if (!capacity) {
+    if (!building) {
         showFieldError('roomBuilding', 'El edificio es obligatorio');
         isValid = false;
     }
